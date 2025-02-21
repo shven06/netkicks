@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border-image prop</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Geo:ital@0;1&family=Goldman:wght@400;700&family=Iceland&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+     .load-pic {
+            position: absolute;
+            top: 50%;
+            right: 40%;
+            translate: -50% -50%;
+            z-index: 1;
+            background-image: linear-gradient(to right,yellow);
+            opacity: 100%;
+            user-select: none;
+            animation-name: spin;
+            animation-duration: 4s;
+            animation-timing-function: linear;
+            animation-direction: normal;
+            animation-iteration-count: 1;
+            animation-delay: 1.5s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(90deg);
+            }
+            25% {
+                transform: rotate(180deg);
+                opacity: 100%;
+            }
+            50% {
+                transform: rotate(270deg);
+                opacity: 100%;
+            }
+            75% {
+                transform: rotate(360deg);
+                opacity: 100%;
+            }
+            100% {
+                transform: rotate(450deg);
+                opacity: 0;
+            } 
+        }
+        .load-pic::after, .load-pic::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-image: conic-gradient(yellow,black,yellow);
+        top: 48%;
+        left: 50%;
+        translate: -50% -50%;
+        z-index:-2;
+        padding: 2px;
+        border-radius: 28px;
+        }
+        .load-pic::before {
+            filter: blur(1.3rem);
+            opacity: 50%;
+        }
+    .labbl{
+        font-size: 2rem;
+        font-family:  audiowide;
+        color: aliceblue;
+        filter: drop-shadow(5px 5px 10px rgb(165, 0, 0));
+    }
+    @property --ankl{
+        syntax: "<angle>";
+        inherits: false;
+        initial-value: 0deg;
+    }
+    .btn1 {
+        color: white;
+        background-color: rgb(9, 0, 38);
+        width: 4em;
+        font-size: 1.6rem;
+        font-weight: 500;
+        font-family: verdana;
+        letter-spacing: 1px;
+        margin-left: 60%;
+        margin-right: 10%;
+        padding: 8px;
+        border-image: conic-gradient(from var(--ankl), rgb(255, 0, 93),rgb(78, 0, 111),rgb(238, 9, 74)) 1 ;
+        border-width: 4px;
+        border-radius: 5px;
+        cursor: pointer;
+        animation-name: jokr;
+        animation-duration: 1s;
+        animation-play-state: running;
+        animation-iteration-count: infinite;
+    }
+    .btn1:hover {
+        background-color: rgba(0, 13, 32, 0.802);
+        animation-play-state: paused;
+    }
+    .btn1:active {
+        box-shadow: 5px 5px 30px red;
+    }
+    @keyframes jokr {
+        0% {
+          --ankl:0deg;
+        }
+        25% {
+            --ankl:90deg;
+        }
+        50% {
+            --ankl:180deg;
+        }
+        75% {
+            --ankl:270deg;
+        }
+        100% {
+           --ankl:360deg;
+        }
+    }
+    .inp1 {
+       font-size: 1.2rem;
+       accent-color: rgb(100, 255, 34);
+       caret-color: yellow ;
+       border: 2px solid purple;
+       border-radius: 5px;
+       padding: 10px;
+       letter-spacing: 2px;
+    }
+    .inp1:active{
+        box-shadow: 5px 5px 10px red;
+    }
+    input[type="checkbox"]{
+        height: 20px;
+        width: 20px;
+        clip-path: circle(50%);
+        accent-color: rgb(74, 246, 143);
+        appearance:none;
+        background: rgb(228, 228, 228);
+    }
+    input[type="checkbox"]:checked {
+        appearance: auto;
+    }
+    .box-a1{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin-top: 150px;
+   height: 60vw;
+   width: 50vw;
+    }
+    input[type="text"],textarea {
+        caret-color: orange;
+        width: 8em;
+    }
+    input[type="password"],textarea {
+        caret-color: red;
+        width: 8em;
+    }
+    @media (max-width:360px) {
+        .box-a1 {
+            width: 100px;
+            height: 300px;
+            margin-left: 5%;
+            margin-right: 5%;
+
+        }
+        .labbl {
+            font-size: 1.3rem;
+        }
+        .inp1 {
+            width: 10rem;
+            letter-spacing: 1px;
+        }
+    }
+    .header {
+            z-index: 100;
+            height: 2cm;
+            display: flex;
+            flex-direction: row;
+            background-color: rgb(0, 0, 0);
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            align-items: center;
+            box-shadow: 2px 1px 7px rgb(213, 35, 35);
+            
+        }
+    .home-icon {
+            width: 70px;
+            object-fit: cover;
+            cursor: pointer;
+             background-color: black;
+        }
+        .netflix-logo {
+            width: 5cm;
+            height: 1.5cm;
+            padding-top: 5px;
+        }
+        .delta {
+            
+            position: relative;
+            display: flex;
+            justify-content: center;
+            
+        }
+        .komo {
+         opacity: 0;
+         cursor: grabbing;
+          }
+          .delta:hover .komo {
+           opacity: 1;
+         }
+         .profile-icon {
+            width: 50px;
+            cursor: pointer;
+            background-color: rgb(220, 220, 220);
+            border-radius: 30px;
+        }
+        .icon {
+               width:25px ;
+               background-color: black;
+               border-width: 3px;
+               border-style: solid;
+               border-color: rgb(18, 18, 18);
+
+         }
+</style>
+
+<script>
+    function uclicked() {
+        let urname = document.getElementById('001').value;
+        let passd = document.getElementById('002').value;
+        console.log(passd);
+        if (passd == 777 && urname == '') {
+             alert('Please Enter your user_name');
+        }
+        else if (passd == 0 && urname == '') {
+            alert('Please enter your username and password')
+        }
+        else if (passd == 777 && urname == 'sagar46') {
+            alert(`WELCOME Mr.${urname}`);
+            window.location.href="netk.html";
+
+        }
+         else if (passd == 0) {
+            alert('PLEASE ENTER UR PASSWORD')
+        }
+         else if (passd != String ) {
+            alert('INCORRECT password. Hint\:  \'JACKPOT\' ')
+        }
+        else {
+            alert('INCORRECT PASSWORD or USERNAME');
+        }
+       
+        console.log(typeof urname,typeof passd,urname)
+    }
+</script>
+
+</head>
+<body bgcolor="black" >
+    <div class="header">
+      <div class="homelogo"><img title="home" class="home-icon" src="https://i.pinimg.com/originals/62/ef/57/62ef576e2f7f55eb3d520cc036d13e5e.jpg" ></div>
+      <div style=" flex:1; background-color: rgb(0, 0, 0); text-align: center; padding-top: 10px; padding-bottom: 10px; "><img class="netflix-logo" src="https://wallpapers.com/images/hd/netflix-logo-red-background-rbt3azw93fwahji6.png"></div>
+      <div class="delta"><img src="https://www.pngplay.com/wp-content/uploads/12/User-Avatar-Profile-Background-PNG-Clip-Art-Image.png" class="profile-icon"><span class="komo" style="position: absolute; color: white;bottom: -16px; ">profile</span> </div>
+      </div>
+    <span class="load-pic">
+        <img src="jsjpeg/radioactive.png" width="50px" alt="bmwv">
+    </span>
+    <div class="box-a1">
+<!--user-name-->
+        <nobr><label class="labbl">Username :</label>
+        <input class="inp1" id="001" type="text" name="=name" value="" placeholder="Enter Username" required></nobr><br>
+<!--pass-->
+        <nobr><label class="labbl">Password :</label>
+        <input class="inp1" id="002" type="password" value="" placeholder="********" required ></nobr><br>
+<!--check-box-->
+        <nobr><label style="letter-spacing:1px;white-space: nowrap;font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 1rem;color: wheat;">subscribe to promotional emails</label>
+        <input type="checkbox"></nobr><br><br>
+        
+        <button class="btn1" onclick = uclicked()>Login</button>
+    </div>
+</body>
+</html>
